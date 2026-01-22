@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dim_country
+    description: "Country dimension."
+    columns:
+      - name: country_key
+        description: "Surrogate key."
+        data_tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: "Canonical country name from extraction."
+        data_tests:
+          - not_null
+
+  - name: dim_track
+    description: "Track dimension."
+    columns:
+      - name: track_key
+        data_tests:
+          - unique
+          - not_null
+      - name: track_name
+        data_tests:
+          - not_null
+
+  - name: dim_artist
+    description: "Artist dimension."
+    columns:
+      - name: artist_key
+        data_tests:
+          - unique
+          - not_null
+      - name: artist_name
+        data_tests:
+          - not_null
+
+  - name: fact_top_tracks_geo_daily
+    description: "Daily top tracks by country (grain: date + country + track)."
+    columns:
+      - name: date_key
+        data_tests:
+          - not_null
+      - name: country_key
+        data_tests:
+          - not_null
+      - name: track_key
+        data_tests:
+          - not_null

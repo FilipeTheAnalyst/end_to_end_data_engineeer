@@ -1,0 +1,18 @@
+source:
+  type: metabase
+  serviceName: metabase
+  serviceConnection:
+    config:
+      hostPort: http://metabase:3000
+      apiKey: ${METABASE_API_KEY}
+
+sink:
+  type: metadata-rest
+  config: {}
+
+workflowConfig:
+  openMetadataServerConfig:
+    hostPort: http://openmetadata-server:8585/api
+    authProvider: openmetadata
+    securityConfig:
+      jwtToken: ${OPENMETADATA_JWT_TOKEN}

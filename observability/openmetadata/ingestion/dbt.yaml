@@ -1,0 +1,22 @@
+source:
+  type: dbt
+  serviceName: dbt
+  sourceConfig:
+    config:
+      type: DBT
+      dbtConfigSource:
+        dbtConfigType: local
+        dbtCatalogFilePath: /dbt/target/catalog.json
+        dbtManifestFilePath: /dbt/target/manifest.json
+        dbtRunResultsFilePath: /dbt/target/run_results.json
+
+sink:
+  type: metadata-rest
+  config: {}
+
+workflowConfig:
+  openMetadataServerConfig:
+    hostPort: http://openmetadata-server:8585/api
+    authProvider: openmetadata
+    securityConfig:
+      jwtToken: ${OPENMETADATA_JWT_TOKEN}

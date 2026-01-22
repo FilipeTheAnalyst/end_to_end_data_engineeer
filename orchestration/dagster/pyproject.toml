@@ -1,0 +1,15 @@
+[project]
+name = "e2e_dagster"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "dagster==1.6.13",
+  "dagster-webserver==1.6.13",
+  "requests==2.32.3",
+]
+
+[tool.dagster]
+module_name = "dagster_project.definitions"
+
+[tool.ruff]
+line-length = 100
